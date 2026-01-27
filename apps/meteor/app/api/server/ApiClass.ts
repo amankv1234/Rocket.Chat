@@ -925,7 +925,7 @@ export class APIClass<TBasePath extends string = '', TOperations extends Record<
 
 							this.parseJsonQuery = () => api.parseJsonQuery(this);
 
-							result = (await DDP._CurrentInvocation.withValue(invocation as any, async () => originalAction.apply(this))) || api.success();
+							result = (await DDP._CurrentInvocation.withValue(invocation, async () => originalAction.apply(this))) || api.success();
 						} catch (e: any) {
 							result = ((e: any) => {
 								switch (e.error) {
